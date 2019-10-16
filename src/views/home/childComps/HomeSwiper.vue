@@ -1,9 +1,30 @@
 <template>
   <div>
-    <swiper v-if="banners.length > 0" :options="swiperOption">
-      <swiper-slide v-for="(slide, index) in banners" :key="index">
+    <!-- v-if="banners.length > 0"  -->
+    <swiper :options="swiperOption">
+      <!-- <swiper-slide v-for="(slide, index) in banners" :key="index">
         <a>
           <img :src="slide.image" alt style="width:100%" @load="imageLoad"/>
+        </a>
+      </swiper-slide> -->
+      <swiper-slide>
+        <a>
+          <img src="../../../assets/img/home/180926_45fkj8ifdj4l824l42dgf9hd0h495_750x390.jpg" alt style="width:100%" @load="imageLoad"/>
+         </a>
+      </swiper-slide>
+      <swiper-slide>
+        <a>
+          <img src="../../../assets/img/home/180917_18l981g6clk33fbl3833ja357aaa0_750x390.jpg" alt style="width:100%" @load="imageLoad"/>
+          </a>
+      </swiper-slide>
+      <swiper-slide>
+        <a>
+          <img src="../../../assets/img/home/180919_3f62ijgkj656k2lj03dh0di4iflea_750x390.jpg" alt style="width:100%" @load="imageLoad"/>
+          </a>
+      </swiper-slide>
+      <swiper-slide>
+        <a>
+          <img src="../../../assets/img/home/180926_31eb9h75jc217k7iej24i2dd0jba3_750x390.jpg" alt style="width:100%" @load="imageLoad"/>
         </a>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>

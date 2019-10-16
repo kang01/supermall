@@ -46,19 +46,28 @@
           pullUpLoad: this.isPullUpLoad,
           pullDownRefresh: true
         })
-        this.bs.on('scroll',(position) => {
-          this.$emit('scroll', position)
-        })
-        this.bs.on('pullingUp',() => {
+        //监听滚动的位置
+        if(this.probeType===2 || this.probeType ===3) {
+            this.bs.on('scroll',(position) => {
+            this.$emit('scroll', position)
+          })
+        }
+       
+        // 监听scroll滚到底部
+        if(this.isPullUpLoad){
+          this.bs.on('pullingUp',() => {
           // console.log("上拉加载更多！")
           // 此方法可以上拉加载多次 标识一次上拉加载动作结束。
           
           this.$emit('pullingUp')
         })
-        this.bs.on('pullingDown', () => {
-          console.log("下拉加载更多！")
-        })
+        }
+        
+        // this.bs.on('pullingDown', () => {
+        //   console.log("下拉加载更多！")
+        // })
       },
+      // 指定滚动位置
       scrollTo(x,y,time=300) {
         this.bs && this.bs.scrollTo && this.bs.scrollTo(x,y,time)
       },
@@ -66,7 +75,11 @@
         this.bs.finishPullUp()
       },
       refresh() {
+        console.log("刷新--------")
         this.bs.refresh()
+      },
+      getScrollY() {
+        return this.bs ? this.bs.y : 0
       }
       
       
@@ -75,7 +88,5 @@
 </script>
 
 <style  scoped>
-  .wrapper {
-
-  }
+  
 </style>

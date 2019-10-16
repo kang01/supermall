@@ -1,5 +1,5 @@
 <template>
-  <div class="goods">
+  <div class="goods-item" @click="itemClick">
     <img :src="goodsItem.show.img" alt="" @load="imageLoad">
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
@@ -24,18 +24,28 @@
     methods: {
       imageLoad() {
         this.$bus.$emit('itemImageLoad')
+      },
+      itemClick() {
+        console.log("跳转详情页");
+        this.$router.push('/detail/' + this.goodsItem.iid)
+        // this.$router.push({
+        //   path: '/detail',
+        //   query: {
+              
+        //   }
+        // })
       }
     }
   }
 </script>
 
 <style  scoped>
-.goods {
+.goods-item {
     padding-bottom: 40px;
     position: relative;
     width: 48%;
   }
-  .goods img {
+  .goods-item img {
     width: 100%;
   }
 

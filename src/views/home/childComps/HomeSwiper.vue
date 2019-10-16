@@ -3,7 +3,7 @@
     <swiper v-if="banners.length > 0" :options="swiperOption">
       <swiper-slide v-for="(slide, index) in banners" :key="index">
         <a>
-          <img :src="slide.image" alt style="width:100%" />
+          <img :src="slide.image" alt style="width:100%" @load="imageLoad"/>
         </a>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -44,7 +44,8 @@ export default {
         // loop: true,
         // 切换效果 默认：slide
         // effect: "slide"
-      }
+      },
+      isLoad: false
     };
   },
   props: {
@@ -58,6 +59,15 @@ export default {
   components: {
     swiper,
     swiperSlide
+  },
+  methods: {
+    imageLoad() {
+      if(!this.isLoad) {
+        this.$emit('swiperImageLoad')
+        this.isLoad = true
+      }
+      
+    }
   }
 };
 </script>
